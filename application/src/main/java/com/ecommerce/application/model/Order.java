@@ -49,4 +49,8 @@ public class Order {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "productId", referencedColumnName = "productId", nullable = false)
     private Product product;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = false)
+    private User user;
 }
