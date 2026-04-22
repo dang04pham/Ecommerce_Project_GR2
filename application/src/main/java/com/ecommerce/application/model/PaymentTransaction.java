@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -14,8 +13,8 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "transactions")
-public class Transaction {
+@Table(name = "payment_transactions")
+public class PaymentTransaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +24,11 @@ public class Transaction {
 
     private String transactionType;
 
-    private LocalDateTime transactionDate;
+    private String transactionStatus;
+
+    private Date createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "orderId", referencedColumnName = "orderId")
-    private Order order;
+    @JoinColumn(name = "paymentId", referencedColumnName = "paymentId")
+    private Payment payment;
 }

@@ -46,9 +46,6 @@ public class Order {
 
     private String recipientPhone;
 
-    @OneToMany(mappedBy = "order")
-    private List<Transaction> transaction;
-
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "productId", referencedColumnName = "productId", nullable = false)
     private Product product;
